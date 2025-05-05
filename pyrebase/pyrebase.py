@@ -39,7 +39,7 @@ class Firebase:
         self.requests = requests.Session()
         if self.referer is not None:
             print('Setting referer to {0}'.format(self.referer))
-            self.requests.headers['Referer'] = self.referer
+            self.requests.headers.update({'Referer':self.referer})
         if config.get("serviceAccount"):
             scopes = [
                 'https://www.googleapis.com/auth/firebase.database',
