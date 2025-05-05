@@ -38,6 +38,7 @@ class Firebase:
         self.credentials = None
         self.requests = requests.Session()
         if self.referer is not None:
+            print('Setting referer to {0}'.format(self.referer))
             self.requests.headers['Referer'] = self.referer
         if config.get("serviceAccount"):
             scopes = [
