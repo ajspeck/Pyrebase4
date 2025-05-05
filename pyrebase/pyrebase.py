@@ -84,6 +84,7 @@ class Auth:
         request_ref = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={0}".format(self.api_key)
         headers = {"content-type": "application/json; charset=UTF-8"}
         data = json.dumps({"email": email, "password": password, "returnSecureToken": True})
+        print(requests.headers)
         request_object = requests.post(request_ref, headers=headers, data=data)
         raise_detailed_error(request_object)
         self.current_user = request_object.json()
