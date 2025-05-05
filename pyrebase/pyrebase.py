@@ -34,8 +34,11 @@ class Firebase:
         self.auth_domain = config["authDomain"]
         self.database_url = config["databaseURL"]
         self.storage_bucket = config["storageBucket"]
+        self.referer = config.get("referer",None)
         self.credentials = None
         self.requests = requests.Session()
+        if self.referer is not None:
+            self.requests.headers['Referer'] = self.referer
         if config.get("serviceAccount"):
             scopes = [
                 'https://www.googleapis.com/auth/firebase.database',
